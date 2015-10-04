@@ -5,7 +5,12 @@
   app.controller("RedditController", function($http, $scope){
     $scope.stories = [];
 
-    $http.get()
+    $http.get("https://www.reddit.com/r/MMA/.json")
+      .success(function(response){
+        angular.forEach(response.data.children, function(child){
+          $scope.stories.push(child.data);
+        });
+      });
   });
 
   app.run(function($ionicPlatform) {
