@@ -13,13 +13,17 @@
   <body ng-app="myreddit" ng-controller="RedditController">
 
     <ion-pane>
-      <ion-header-bar class="bar-stable">
+      <ion-header-bar class="bar-positive">
         <h1 class="title">My Reddit</h1>
       </ion-header-bar>
       <ion-content>
-        <div ng-repeat="story in stories">
-          <a href="{{story.url}}" target="_blank">{{story.title}}</a>
+
+        <div class="list">
+          <a href="{{story.url}}" target="_blank" class="item" ng-repeat="story in stories">
+            <h2><img ng-src="{{story.thumbnail}}"> {{story.title}}</h2>
+          </a>
         </div>
+
       </ion-content>
     </ion-pane>
   </body>
