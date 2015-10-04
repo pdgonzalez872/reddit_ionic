@@ -5,7 +5,7 @@
   app.controller("RedditController", function($http, $scope){
     $scope.stories = [];
 
-    $http.get("https://www.reddit.com/r/MMA/.json")
+    $http.get("http://www.reddit.com/r/mountaingoats/.json")
       .success(function(response){
         angular.forEach(response.data.children, function(child){
           $scope.stories.push(child.data);
