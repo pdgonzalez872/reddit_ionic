@@ -19,8 +19,12 @@
       <ion-content>
 
         <div class="list">
-          <a href="{{story.url}}" target="_blank" class="item" ng-repeat="story in stories">
-            <h2><img ng-src="{{story.thumbnail}}"> {{story.title}}</h2>
+          <a class="item item-thumbnail-left"
+             href="{{story.url}}"
+             target="_blank"
+             ng-repeat="story in stories">
+            <h2><img ng-src="{{story.thumbnail}}"
+                     ng-if="story.thumbnail.indexOf('http') === 0"> {{story.title}}</h2>
           </a>
         </div>
 
