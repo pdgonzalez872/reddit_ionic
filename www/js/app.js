@@ -11,6 +11,12 @@
         .success(function(response){
           var stories = [];
           angular.forEach(response.data.children, function(child){
+
+            // deals with no images
+            var story = child.data;
+            if (!story.thumbnail || story.thumbnail === 'self' || story.thumbnail === 'default'){
+              story.thumbnail = 'https://www.redditstatic.com/icon.png';
+            }
             stories.push(child.data);
           });
         callback(stories);
