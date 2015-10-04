@@ -11,6 +11,12 @@
         .success(function(response){
           var stories = [];
           angular.forEach(response.data.children, function(child){
+
+            // deals with no images
+            var story = child.data;
+            if (!story.thumbnail || story.thumbnail === 'self' || story.thumbnail === 'default'){
+              story.thumbnail = 'https://www.redditstatic.com/icon.png';
+            }
             stories.push(child.data);
           });
         callback(stories);
@@ -38,12 +44,21 @@
       });
     };
 
+    $scope.openLink = function(url){
+      window.open(url, "_blank")
+    }
+
   });
 
   app.run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
       if(window.cordova && window.cordova.plugins.Keyboard) {
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+      }
+
+      // need to override the window.open function that is set as default.
+      if (window.cordova && window.cordova.InAppBrowser){
+        window.open = window.cordova.InAppBrowser.open;
       }
       if(window.StatusBar) {
         StatusBar.styleDefault();
