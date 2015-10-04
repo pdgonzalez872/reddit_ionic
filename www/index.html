@@ -20,6 +20,13 @@
       </ion-header-bar>
       <ion-content>
 
+        <!-- This implements to refresh feature -->
+        <ion-refresher
+          pulling-text="Pull to refresh..."
+          on-refresh="loadNewerStories()">
+        </ion-refresher>
+
+        <!-- This starts the list we want to display -->
         <div class="list">
           <a class="item item-thumbnail-left"
              href="{{story.url}}"
@@ -33,6 +40,8 @@
             <h2 class="story-title">
               {{story.title}}
             </h2>
+
+            <!-- This deals with the time stamp -->
             <p>
               <span am-time-ago="story.created_utc" am-preprocess="unix"></span>
             </p>
