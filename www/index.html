@@ -29,10 +29,9 @@
         <!-- This starts the list we want to display -->
         <div class="list">
           <a class="item item-thumbnail-left"
-             href="{{story.url}}"
-             target="_blank"
-
+             ng-click="openLink(story.url)"
              ng-repeat="story in stories track by story.id">
+
              <!-- uses a before/after parameter from reddits api -->
              <!-- this is recommended when you have indexed data -->
             <img ng-src="{{story.thumbnail}}"
